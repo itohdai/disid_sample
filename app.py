@@ -16,7 +16,7 @@ oauth.register(
     name="disidauth",
     server_metadata_url="https://unifyidapi-dev.auth.pc-daiwabo.co.jp/oauth/v2/.well-known/openid-configuration",
     client_kwargs={
-        "scope": "openid profile"
+        "scope": "openid profile disAppliUserId"
         ,"code_challenge_method": "S256"
     }
 )
@@ -24,7 +24,8 @@ oauth.register(
 @app.route("/")
 def homepage():
     user = session.get("user")
-    return render_template('index.html', user=user)
+    userjson = user.json()
+    return render_template('index.html', user=userjson['idatenID'])
 
 @app.route("/login", methods=["GET"])
 def login():
