@@ -16,7 +16,7 @@ oauth.register(
     name="disidauth",
     server_metadata_url="https://unifyidapi-dev.auth.pc-daiwabo.co.jp/oauth/v2/.well-known/openid-configuration",
     client_kwargs={
-        "scope": "openid disAppliUserId"
+        "scope": "openid disAppliUserId profile"
         ,"code_challenge_method": "S256"
     }
 )
