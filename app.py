@@ -24,8 +24,10 @@ oauth.register(
 @app.route("/")
 def homepage():
     user = session.get("user")
-    #userjson = user.json()
-    return render_template('index.html', user=user['idatenID'])
+    if user is None:
+        return render_template('index.html', user=user)
+    else:
+        return render_template('index.html', user=user['idatenID'])
 
 @app.route("/login", methods=["GET"])
 def login():
