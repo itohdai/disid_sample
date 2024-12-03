@@ -44,4 +44,7 @@ def logout():
     return redirect("/")
 
 if __name__ == "__main__":
-    app.run(host='0.0.0.0', port=44355, ssl_context=('openssl/server.crt', 'openssl/server.key'), threaded=True, debug=True)
+    port = os.environ.get('FLASK_PORT') or 8080
+    port = int(port)
+#    app.run(host='0.0.0.0', port=44355, ssl_context=('openssl/server.crt', 'openssl/server.key'), threaded=True, debug=True)
+    app.run(host='0.0.0.0', port=port, debug=True)
